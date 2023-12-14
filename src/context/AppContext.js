@@ -47,7 +47,8 @@ export default function AppContextProvider({children}){
         setPage,
         totalPage, 
         settotalPage,
-        fetchBlogPosts
+        fetchBlogPosts,
+        handlerPageChange
     };
     return <AppContext.Provider value={value}> 
     {children} 
