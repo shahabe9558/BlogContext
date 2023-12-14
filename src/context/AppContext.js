@@ -1,10 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { baseUrl } from "../baseUrl";
 // to create a context api 
 export const AppContext = createContext();
 
 export default function AppContextProvider({children}){
-    const [post, setPost] = useState([]);
+    const [posts, setPost] = useState([]);
     const[loading, setloading] = useState(true);
     const[page, setPage] = useState(1);
     const[totalPage, settotalPage] = useState(null);
@@ -15,6 +15,7 @@ export default function AppContextProvider({children}){
         try{
             const data = await fetch(url);
             const result = await data.json();
+            console.log("Printing the result from api called", result);
             setPost(result.posts);
             setPage(result.page);
             settotalPage(result.totalPages);
@@ -25,7 +26,12 @@ export default function AppContextProvider({children}){
             setPost([]);
             settotalPage(null);
         }
+        setloading(false);
     }
+    
+  useEffect(() => {
+    fetchBlogPosts();
+  },[]);
 
     const handlerPageChange = (page) =>{
         setPage(page);
@@ -33,7 +39,7 @@ export default function AppContextProvider({children}){
     }
 
     const value = {
-        post,
+        posts,
         setPost,
         loading,
         setloading,
