@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext";
 const Pagination =  () => {
     const {page, totalPage, handlerPageChange} = useContext(AppContext);
     return (
-        <div>
+        <div className="border border-yellow-500">
             <div>
                 { page > 1 && (
                     <button onClick={() => handlerPageChange(page - 1)}>

@@ -29,9 +29,7 @@ export default function AppContextProvider({children}){
         setloading(false);
     }
     
-  useEffect(() => {
-    fetchBlogPosts();
-  },[]);
+
 
     const handlerPageChange = (page) =>{
         setPage(page);

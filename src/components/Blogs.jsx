@@ -5,7 +5,7 @@ import Card from "./Card";
 const BLogs =  () => {
     const {posts, loading} = useContext(AppContext);
     return (
-        <div>
+        <div className="border border-red-600">
           {
             loading 
             ? (<Spinner/>)
